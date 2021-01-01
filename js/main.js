@@ -13,12 +13,16 @@ updateMap(gps_lat,gps_lng,zoom);
 // fonction de recherche de ville
 function searchCity() {
 
+    var alerte = document.getElementById('alerte');
+
     // on recupère la valeur saisie dans le input texte
     var saisieBrute= document.getElementById('ville').value;
 
     // on transforme la saisie en chaine de caractère
     var saisie = saisieBrute.toString();
-    var alerte = document.getElementById('alerte');
+    
+    // moteur de recherche
+
 
     ajaxGet("json/cities.json", function (reponse) { 
 
@@ -30,6 +34,8 @@ function searchCity() {
 
             // on verifie la saisie
             if ( saisie != "" ) {
+
+                console.log(saisie[0])
 
                 // on rajoute une majuscule au début de la saisie pour que ça colle avec les noms de ville du fichier JSON
                 var saisieTraite = saisie[0].toUpperCase() + saisie.substring(1);
